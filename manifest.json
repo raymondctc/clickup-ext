@@ -21,6 +21,11 @@
 		"page": "options/index.html",
 		"open_in_tab": true
 	},
+	"browser_specific_settings": {
+		"gecko": {
+			"id": "clickup_ext@example.com"
+		}
+	},	  
 	"permissions": [
 		"storage",
 		"*://api.clickup.com/*"

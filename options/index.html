@@ -1,9 +1,21 @@
+<!DOCTYPE html>
 <html>
-    <h1>Yo</h1>
-    <div id="app"></div>
-    <script src="dist/main.js"></script>
-    <script>
-        console.log("Fuck")
-    </script>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <form>
+            <fieldset>
+                <legend>API keys</legend>
+                <p>
+                    Clickup API key: <input type="text" id="clickup_api_key" name="clickup_api_key" />
+                </p>
+                <p>
+                    Github API key: <input type="text" id="github_api_key" name="github_api_key" />
+                </p>
+                <input type="submit" value="Save">
+            </fieldset>
+        </form>
+    </body>
+    <script src="script.js"></script>
 </html>
-
