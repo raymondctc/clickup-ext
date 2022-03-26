@@ -9,7 +9,7 @@
 	"content_scripts": [
 		{
 			"matches": [
-				"*://*.mozilla.org/*"
+				"*://*.clickup.com/*"
 			],
 			"js": [
 				"content_script.js"
@@ -18,5 +18,9 @@
 	],
 	"options_ui": {
 		"page": "options/index.html"
-	}
+	},
+	"permissions": [
+		"storage",
+		"*://api.clickup.com/*"
+	]
 }

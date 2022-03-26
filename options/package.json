@@ -1,0 +1,12 @@
+{
+  "name": "clickup-ext-settings",
+  "version": "0.0.1",
+  "description": "Setting page of this addon",
+  "main": "index.js",
+  "repository": "https://github.com/raymondctc/clickup-ext",
+  "author": "raymond",
+  "license": "MIT",
+  "dependencies": {
+    "vuex": "^4.0.2"
+  }
+}
