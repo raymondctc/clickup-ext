@@ -13,7 +13,7 @@
 				"*://*.clickup.com/*"
 			],
 			"js": [
-				"content_script.js"
+				"task_content_script.js", "lib/jquery-3.6.0.min.js"
 			]
 		}
 	],
