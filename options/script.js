@@ -3,13 +3,25 @@
 function saveOptions(e) {
     const formData = new FormData(document.querySelector('form'))
 
-    const data = {}
+    const apiKeys = {}
+    const githubOptions = {}
     for (var pair of formData.entries()) {
-        data[pair[0]] = pair[1]
+        const key = pair[0]
+        const value = pair[1]
+
+        if (key.includes('api_key')) {
+            apiKeys[key] = value
+        }
+
+        if (key.includes('github_option')) {
+            githubOptions[key] = value
+        }
+        
     }
 
     browser.storage.sync.set({
-        'api_keys': data
+        'api_keys': apiKeys,
+        'github_options': githubOptions
     })
 
     e.preventDefault();
@@ -20,6 +32,7 @@ function restoreOptions() {
     storageItem.then((res) => {
         document.getElementById('clickup_api_key').value = res.api_keys.clickup_api_key
         document.getElementById('github_api_key').value = res.api_keys.github_api_key
+        document.getElementById('github_option_default_repo').value = res.github_options.github_option_default_repo
     });
 }
 
