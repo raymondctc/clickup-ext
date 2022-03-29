@@ -28,14 +28,33 @@ function saveOptions(e) {
 }
 
 function restoreOptions() {
-    let storageItem = browser.storage.sync.get('api_keys')
+    var storageItem = browser.storage.sync.get('api_keys')
     storageItem.then((res) => {
-        document.getElementById('clickup_api_key').value = res.api_keys.clickup_api_key
-        document.getElementById('github_api_key').value = res.api_keys.github_api_key
-        document.getElementById('github_option_default_repo').value = res.github_options.github_option_default_repo
+        const clickUpApiKey = res.api_keys.clickup_api_key
+        const githubApiKey = res.api_keys.github_api_key
+        if (clickUpApiKey) {
+            document.getElementById('clickup_api_key').value = clickUpApiKey
+        }
+        
+        if (githubApiKey) {
+            document.getElementById('github_api_key').value = githubApiKey
+        }
     });
-}
 
+    storageItem = browser.storage.sync.get('github_options')
+    storageItem.then((res) => {
+        const githubUsername = res.github_options.github_option_username
+        const githubRepo = res.github_options.github_option_default_repo
+
+        if (githubUsername) {
+            document.getElementById('github_option_username').value = githubUsername
+        }
+        
+        if (githubRepo) {
+            document.getElementById('github_option_default_repo').value = githubRepo
+        }
+    })
+}
 
 document.addEventListener('DOMContentLoaded', restoreOptions);
 document.querySelector("form").addEventListener("submit", saveOptions);

@@ -1,0 +1,29 @@
+/*
+* Copied from ClickUp
+* // css animation: class=commandbar-loader css-i15jzj
+* // animation: animation-1xwdn1n;
+*/
+.cu-ext-loading-indicator {
+    position: relative;
+    border-width: 2px;
+    border-style: solid;
+    border-color: rgb(240, 241, 243) rgba(240, 241, 243, 0.2) rgba(240, 241, 243, 0.2);
+    height: 20px;
+    width: 20px;
+    content: "";
+    box-sizing: border-box;
+    border-radius: 50%;
+    animation: mdi-spin 0.6s linear 0s infinite normal none;
+    animation-play-state: running;
+}
+
+@keyframes mdi-spin {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(359deg);
+      transform: rotate(359deg);
+    }
+}

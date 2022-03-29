@@ -12,6 +12,7 @@
 			"matches": [
 				"*://*.clickup.com/*"
 			],
+			"css": ["content.css"],
 			"js": [
 				"task_content_script.js", "lib/jquery-3.6.0.min.js"
 			]
@@ -28,6 +29,7 @@
 	},	  
 	"permissions": [
 		"storage",
-		"*://api.clickup.com/*"
+		"*://api.clickup.com/*",
+		"*://api.github.com/*"
 	]
 }
