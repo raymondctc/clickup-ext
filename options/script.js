@@ -1,5 +1,8 @@
 // https://github.com/mdn/webextensions-examples/blob/master/favourite-colour/options.js
 
+const _browser = (typeof browser === 'undefined') ? chrome : browser
+const storage = _browser.storage
+
 function saveOptions(e) {
     const formData = new FormData(document.querySelector('form'))
 
@@ -19,7 +22,7 @@ function saveOptions(e) {
         
     }
 
-    browser.storage.sync.set({
+    storage.sync.set({
         'api_keys': apiKeys,
         'github_options': githubOptions
     })
@@ -28,8 +31,7 @@ function saveOptions(e) {
 }
 
 function restoreOptions() {
-    var storageItem = browser.storage.sync.get('api_keys')
-    storageItem.then((res) => {
+    storage.sync.get('api_keys', (res) => {
         const clickUpApiKey = res.api_keys.clickup_api_key
         const githubApiKey = res.api_keys.github_api_key
         if (clickUpApiKey) {
@@ -39,10 +41,9 @@ function restoreOptions() {
         if (githubApiKey) {
             document.getElementById('github_api_key').value = githubApiKey
         }
-    });
+    })
 
-    storageItem = browser.storage.sync.get('github_options')
-    storageItem.then((res) => {
+    storage.sync.get('github_options', (res) => {
         const githubUsername = res.github_options.github_option_username
         const githubRepo = res.github_options.github_option_default_repo
 

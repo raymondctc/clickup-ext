@@ -2,6 +2,9 @@
 const ENDPOINT_GITHUB = 'https://api.github.com'
 const ENDPOINT_CLICKUP = "https://api.clickup.com/api/v2"
 
+const _browser = (typeof browser === 'undefined') ? chrome : browser
+const storage = _browser.storage
+
 var hasGithubIconDetected = false
 let lastUrl = location.href; 
 new MutationObserver(() => {
@@ -80,7 +83,7 @@ const onCreateIssueClicked = async (e) => {
     const title = data.title
 
     const issueLink = await _createGithubIssue(taskId, data.url, title)
-    if (issueLink.length != 0) {
+    if (issueLink != null) {
         const response = await _addClickupComment(taskId, 'Github task created: ' + issueLink)
         $(loadingIndicator).remove()
     } else {
@@ -96,18 +99,21 @@ const onCreateIssueClicked = async (e) => {
  * @param {string} clickupTaskUrl
  * @param {string} clickUpTaskTitle 
  * 
- * @returns {string}
+ * @returns {Promise<string>}
  */
  async function _createGithubIssue(clickupTaskId, clickupTaskUrl, clickUpTaskTitle) {
-    const apiKeysResult = await browser.storage.sync.get('api_keys')
-    const githubApiKey = apiKeysResult.api_keys.github_api_key
+    const res = await getFromStorage(['api_keys', 'github_options'])
+    console.log(res)
 
-    const githubResult = await browser.storage.sync.get('github_options')
-    const repo = githubResult.github_options.github_option_default_repo
-    const username = githubResult.github_options.github_option_username
-
+    const githubApiKey = res.api_keys.github_api_key
+    const repo = res.github_options.github_option_default_repo
+    const username = res.github_options.github_option_username
+    // console.log('### ' + repo + ' auth=' + username + ':' + githubApiKey)
+    
     try {
-        const response = await fetch(ENDPOINT_GITHUB + '/repos/' + repo + '/issues',{
+        const endpoint = ENDPOINT_GITHUB + '/repos/' + repo + '/issues'
+        // console.log('@@@ ' + endpoint)
+        const response = await fetch(endpoint, {
             method: 'POST',
             headers: {
                 'Authorization': 'Basic ' + btoa(username + ':' + githubApiKey)
@@ -118,6 +124,7 @@ const onCreateIssueClicked = async (e) => {
             })
         })
         const json = await response.json()
+        console.log(json)
         return json.html_url
     } catch (e) {
         console.error(e)
@@ -125,7 +132,7 @@ const onCreateIssueClicked = async (e) => {
         // Show loading indicator
         // Create github task Title = "#clickUpTaskId - clickUpTaskTitle, body=url"
         // Ping to comment for github link - Github task created: {link}
-        return ''
+        return null
     }
 }
 
@@ -135,8 +142,8 @@ const onCreateIssueClicked = async (e) => {
  * @param {string} comment 
  */
 async function _addClickupComment(taskId, comment) {
-    const apiKeysResult = await browser.storage.sync.get('api_keys')
-    const clickupApiKey = apiKeysResult.api_keys.clickup_api_key
+    const res = await getFromStorage('api_keys')
+    const clickupApiKey = res.api_keys.clickup_api_key    
 
     try {
         const endpoint = ENDPOINT_CLICKUP + '/task/' + taskId + '/comment'
@@ -156,3 +163,7 @@ async function _addClickupComment(taskId, comment) {
         return null
     }
 }
+
+const getFromStorage = keys => new Promise((resolve, reject) => {
+    return storage.sync.get(keys, result => resolve(result))
+})
