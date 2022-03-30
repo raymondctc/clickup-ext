@@ -27,6 +27,8 @@ Clone this repository to your directory
 
 ### Chrome
 
+Check [this guide](https://youtu.be/eM42mK9ZEPk)
+
 1. Go to `chrome://extensions`
 2. Turn on "Developer mode" ![img](assets/chrome_addon_install_1.png)
 3. Click "Load unpacked" from the menu
