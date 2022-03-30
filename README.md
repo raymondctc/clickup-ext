@@ -4,7 +4,7 @@ This is a ClickUp extension designed for Chrome and Firefox
 
 ## Features
 
-1. A handy "Create new issue" button in ClickUp task, when clicked a new issue in Github will be created with format: `#{clickup_task_id} - {ClickUp issue name}`. After task creation, a new comment with Github link will be added. ![feature_1](assets/addon_feature_1.png)
+1. A handy "Create new issue" button in ClickUp task. Click to create a new issue in Github with format: `#{clickup_task_id} - {ClickUp issue name}`. After task creation, a new comment with Github link will be added to Clickup. ![feature_1](assets/addon_feature_1.png)
 
 2. Allowing batch select backlinked tasks and add comments in batch. (TBD)
 
