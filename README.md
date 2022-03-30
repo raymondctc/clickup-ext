@@ -12,6 +12,10 @@ This is a ClickUp extension designed for Chrome and Firefox
 
 Clone this repository to your directory
 
+### Chrome
+
+1. Check [this guide](https://youtu.be/eM42mK9ZEPk)
+
 ### Firefox
 
 1. Go to `about:config`, click "Accept the Risk and Continue"
@@ -25,18 +29,9 @@ Clone this repository to your directory
 4. Go to this repository and execute `web-ext build`, a zip artifact should be created under `web-ext-artifacts/`
 5. Go to `about:addons` in Firefox, drag this zip file to install, you may see some warning, acknowledge it.
 
-### Chrome
-
-1. Check [this guide](https://youtu.be/eM42mK9ZEPk)
-
 ## Setup
 
 Addon setup steps
-
-### Firefox
-
-1. Go to `about:addons`
-2. Select "Preferences" ![img](assets/firefox_addon_setup_1.png)
 
 ### Chrome
 
@@ -51,5 +46,11 @@ Then, you will need to setup the followings in the preference page.
 3. Github username
 4. Your default working repository
 5. Click save -> Done!
+
+
+### Firefox
+
+1. Go to `about:addons`
+2. Select "Preferences" ![img](assets/firefox_addon_setup_1.png)
 
 
