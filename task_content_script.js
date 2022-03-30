@@ -17,9 +17,9 @@ new MutationObserver(() => {
     if (!hasGithubIconDetected) {
         const taskContainer = document.getElementsByClassName('task-container')[0]
         if (document.contains(taskContainer)) {
-            const githubIcon = getGithubIcon()
+            const githubIcon = _getGithubIcon()
             if (githubIcon != undefined) { 
-                prependCreateIssueButton(githubIcon.parentElement)
+                _prependCreateIssueButton(githubIcon.parentElement)
                 hasGithubIconDetected = true
             }
         }
@@ -31,7 +31,7 @@ new MutationObserver(() => {
  * 
  * @returns {Node}
  */
-function getGithubIcon() {
+function _getGithubIcon() {
     const elem = $('cu-git-info-icon').get()[0]
     return elem
 }
@@ -40,7 +40,7 @@ function getGithubIcon() {
  * 
  * @param {Node} container 
  */
-function prependCreateIssueButton(container) {
+function _prependCreateIssueButton(container) {
     // To mimic clickup's style
     const createNewIssueBtn = $('<div class="cu-task-header__control cu-task-header__control_public-sharing"><div class="cu-task-header__control_public-sharing-text cu-task-header__control_public-sharing-text-copy">Create new issue</div></div>')
     const title = $('.task-name__overlay')[0]
@@ -54,10 +54,10 @@ function prependCreateIssueButton(container) {
 }
 
 function onUrlChange() {
-    resetFlags()
+    _resetFlags()
 }
 
-function resetFlags() {
+function _resetFlags() {
     hasGithubIconDetected = false
 }
 

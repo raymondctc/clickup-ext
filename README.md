@@ -49,7 +49,7 @@ Addon setup steps
 
 Then, you will need to setup the followings in the preference page.
 
-1. ClickUp API key
+1. ClickUp API key ![clickup_1](assets/clickup_token_1.png) ![clickup2](assets/clickup_token_2.png)
 2. Github API key -> follow these steps. Obtaining only `repo` permission should be enough for now ![github_1](assets/github_token_1.png)![github_2](assets/github_token_2.png)![github_3](assets/github_token_3.png)![github_4](assets/github_token_4.png)
 3. Github username
 4. Your default working repository
