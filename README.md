@@ -53,4 +53,7 @@ Then, you will need to setup the followings in the preference page.
 1. Go to `about:addons`
 2. Select "Preferences" ![img](assets/firefox_addon_setup_1.png)
 
+Example
+![CleanShot 2022-09-09 at 12 00 19@2x](https://user-images.githubusercontent.com/13764117/189424724-d6fe6f0a-b921-4f63-845b-5238f980959e.png)
+
 
